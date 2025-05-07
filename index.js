@@ -16,7 +16,7 @@ app.get('/', async (req, res) => {
     }
 })
 
-app.get('/emp', async (req, res) => {
+app.get('/employees', async (req, res) => {
     try{
         const result = await pool.query('SELECT * FROM employees')
         res.json(result.rows);
@@ -24,17 +24,14 @@ app.get('/emp', async (req, res) => {
         res.status(500).json({Error: error.message})
     }
 })
-
-app.get('/emp-count', async (req, res) => {
+app.get('/countries', async (req, res) => {
     try{
-        const result = await pool.query('SELECT COUNT(*) FROM employees')
+        const result = await pool.query('SELECT * FROM countries')
         res.json(result.rows);
     } catch(error) {
         res.status(500).json({Error: error.message})
     }
 })
-
-
 
 
 const port = process.env.PORT;
